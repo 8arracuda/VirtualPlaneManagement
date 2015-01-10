@@ -25,6 +25,10 @@ sdApp.config(function ($routeProvider) {
             templateUrl: 'showPlanes.html',
             controller: 'ShowPlanesController'
         }).
+        when('/addPlane', {
+            templateUrl: 'addPlane.html',
+            controller: 'AddPlaneController'
+        }).
         otherwise({
             redirectTo: '/start'
         });

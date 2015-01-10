@@ -24,6 +24,10 @@ sdApp.controller('SidebarController', function ($scope) {
         {
             labelText: 'Show Planes',
             linkURL: 'showPlanes'
+        },
+        {
+            labelText: 'Add Planes',
+            linkURL: 'addPlane'
         }
     ];
 

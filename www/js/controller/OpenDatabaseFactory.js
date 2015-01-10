@@ -7,13 +7,9 @@ angular.module('OpenDatabaseFactory', [])
                 var db;
                 console.log('openDatabase start');
 
-                callback(db);
+                //callback(db);
 
                 if (db==null) {
-
-                } else {
-
-
 
                     //Quelle:
                     // https://developer.mozilla.org/de/docs/IndexedDB/IndexedDB_verwenden
@@ -58,8 +54,11 @@ angular.module('OpenDatabaseFactory', [])
                         }
                     }
 
+
+                }  else {
+                    //return db;
+                    callback(db);
                 }
-                //return db;
             }
 
 

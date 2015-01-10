@@ -22,11 +22,8 @@ sdApp.controller('PlaneModelsController', function ($scope, $rootScope, OpenData
         };
 
         transaction.onerror = function (event) {
-            console.error('transaction.onerror (in startPerformanceTest_onlyOne)');
+            console.error('transaction.onerror');
         };
-
-
-
     });
 
 });
