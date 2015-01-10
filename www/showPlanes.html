@@ -1,0 +1,19 @@
+<div class="scrollable">
+    <div class="scrollable-content">
+<div class="panel">
+    <div class="panel-heading">
+        Show Planes
+    </div>
+    <div class="panel-body">
+
+                <a ng-click="addPlane()" class="btn btn-primary">addPlane</a>
+
+                <div class="list-group">
+                    <a ng-repeat="plane in planes" class="list-group-item">{{ plane.model }} {{ plane.reg }}
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

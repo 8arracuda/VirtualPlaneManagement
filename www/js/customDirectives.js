@@ -1,0 +1,5 @@
+//sdApp.directive('ngOpenDatabase', function () {
+//
+//
+//
+//});
