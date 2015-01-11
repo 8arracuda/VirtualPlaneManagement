@@ -1,0 +1,47 @@
+<a class="btn btn-primary" ng-click="savePlaneModels()">save planeModels</a>
+
+
+<div class="scrollable">
+    <div class="scrollable-content">
+
+        <div class="panel">
+            <div class="panel-heading">
+                Import
+            </div>
+            <div class="panel-body">
+
+                <a ng-click="savePlaneModels()" class="btn btn-primary">save Plane</a>
+            </div>
+
+            <div class="panel-heading">
+                Export
+            </div>
+            <div class="panel-body">
+
+                <input
+                        bs-form-control
+                        id="exportString1"
+                        type="text"
+                        label="ExportString1"
+                        placeholder=""
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="exportString1"
+                        />
+
+                <input
+                        bs-form-control
+                        id="exportString2"
+                        type="text"
+                        label="ExportString2"
+                        placeholder=""
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="exportString2"
+                        />
+            </div>
+
+        </div>
+
+    </div>
+</div>

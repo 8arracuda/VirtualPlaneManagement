@@ -45,7 +45,7 @@ sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routePa
 
             transaction.oncomplete = function (event) {
 
-                alert("Änderungen wurden gespeichert");
+               // alert("Änderungen wurden gespeichert");
 
             };
 
@@ -54,7 +54,6 @@ sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routePa
                 $scope.testInProgress = false;
             };
         });
-
     };
 
     $scope.addLanding = function () {
@@ -63,6 +62,8 @@ sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routePa
         $scope.myPlane.landings.push({airport: $scope.airport.toUpperCase(), spd: $scope.landingSpeed});
 
         console.dir($scope.myPlane);
+        $scope.airport="";
+        $scope.spd="";
 
         $scope.save();
 
@@ -78,5 +79,72 @@ sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routePa
         $scope.$apply();
 
     }, myPlaneId);
+
+
+    $scope.camera = navigator.camera;
+
+    cameraSuccess = function (imageData) {
+        var image = document.getElementById('myImage');
+        image.src = "data:image/jpeg;base64," + imageData;
+
+    };
+
+    cameraError = function (message) {
+        alert('Failed because: ' + message);
+    };
+
+    $scope.startCamera = function () {
+        console.log('start camera');
+
+        navigator.camera.getPicture(cameraSuccess, cameraError, { quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL
+        });
+
+    };
+
+    $scope.stopCamera = function () {
+        console.log('stop camera');
+
+    };
+
+    //call newFileSelected when something changes
+    document.getElementById('files').addEventListener('change', newFileSelected, false);
+
+    function newFileSelected(evt) {
+        var fileList = evt.target.files; // FileList object
+        console.dir(fileList);
+        var f = fileList[0];
+
+        //Code teilweise von http://wiki.selfhtml.org/wiki/JavaScript/API/File_Upload
+        var reader = new FileReader(); //Lege neues Filereader-Objekt an
+
+        // Dateiinformationen auslesen.
+        reader.onload = (function(theFile) {
+            return function(e) {
+                var span = document.createElement('span');
+                span.innerHTML = ['<img width="100" src="', e.target.result,
+                    '" title="', theFile.name, '"/>'].join('');
+                document.getElementById('list').insertBefore(span, null);
+
+                var ctx = document.getElementById('canvas').getContext('2d');;
+
+                var img = new Image;
+                img.src = URL.createObjectURL(f);
+                img.onload = function() {
+                    ctx.scale(50, 50);
+                    ctx.drawImage(img,0,0,60,60);
+                    console.log('the image is drawn');
+                }
+            };
+        })(f);
+
+        // Dateipfad aus Datei erzeugen.
+        //reads the image and shows it
+        reader.readAsDataURL(f);
+
+        var dataurl = canvas.toDataURL("image/png");
+        console.log(dataurl.length);
+
+    }
 
 });

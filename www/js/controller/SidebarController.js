@@ -18,8 +18,8 @@ sdApp.controller('SidebarController', function ($scope) {
         //    linkURL: 'planes'
         //},
         {
-            labelText: 'Import',
-            linkURL: 'import'
+            labelText: 'Import / Export',
+            linkURL: 'importExport'
         },
         //{
           //  labelText: 'Show My Plane',

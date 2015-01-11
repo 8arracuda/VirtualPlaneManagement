@@ -17,7 +17,6 @@ sdApp.controller('AddPlaneController', function ($scope, $rootScope, OpenDatabas
     });
 
 
-
     loadMyPlanes = function() {
 
         OpenDatabaseFactory.myPlanes(function (myPlanes) {

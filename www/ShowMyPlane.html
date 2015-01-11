@@ -47,6 +47,8 @@
                         ng-model="airport"
                         />
 
+                <canvas id="canvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+
                 <input
                         bs-form-control
                         id="landingSpeed"
@@ -58,6 +60,25 @@
                         ng-model="landingSpeed"
                         />
 
+                <div ng-show="!camera">
+                    no camera available!
+                </div>
+
+                <div ng-show="camera">
+
+                    <a class="btn btn-primary" ng-click="startCamera()">start camera</a>
+                    <a class="btn btn-warning" ng-click="stopCamera()">stop camera</a>
+
+                    <img id="myImage">
+                </div>
+
+
+                <h2>capure image</h2><br>
+                <input type="file" id="filesCapture" accept="image/*" capture><br>
+
+                <input type="file" id="files" accept="image/*"><br>
+
+                <div id="list"></div>
 
                 <button ng-class="{disabled: airport.length<4 || !airport}" ng-click="addLanding()" class="btn btn-primary">add landing</button>
                 <a ng-click="reset()" class="btn btn-primary">reset</a>

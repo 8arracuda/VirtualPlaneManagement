@@ -12,12 +12,46 @@
                     <a ng-show="loadInProgress" class="list-group-item list-group-item-warning">
                         loading...
                     </a>
-                    <a ng-repeat="planemodel in planeModels" class="list-group-item">
+                    <a ng-repeat="planemodel in planeModels" class="list-group-item" ng-click="selectPlaneModel(planemodel.id)">
                         {{ planemodel.manufacturer }} {{ planemodel.model }}
                         <!--<i class="fa fa-chevron-right pull-right"></i>-->
                     </a>
                 </div>
             </div>
+
+            <div class="panel-heading">
+                Edit Planemodel
+            </div>
+
+            <div class="panel-body">
+
+                <input
+                        bs-form-control
+                        id="manufacturer"
+                        type="text"
+                        label="manufacturer"
+                        placeholder="enter the plane's manufacturer here"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="selectedPlaneModel.manufacturer"
+                        />
+
+                <input
+                        bs-form-control
+                        id="model"
+                        type="text"
+                        label="model"
+                        placeholder="enter the plane's model here"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="selectedPlaneModel.model"
+                        />
+
+                <button class="btn btn-primary" ng-click="savePlaneModel()">save</button>
+                <button class="btn btn-primary" ng-click="createPlaneModel()">create</button>
+
+            </div>
+
         </div>
 
     </div>

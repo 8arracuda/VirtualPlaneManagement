@@ -1,25 +1,5 @@
 [
   {
-    "id":-1,
-    "manufacturer":"-select manufacturer-",
-    "model":"-",
-    "icao":"-",
-    "wake":"-",
-    "length_m":null,
-    "span_m":null,
-    "height_m":null,
-    "wingarea_m2":null,
-    "max_fuel_kg":null,
-    "mtow_kg":null,
-    "empty_weight_pfd":null,
-    "max_weight_pfd":null,
-    "max_passengers":null,
-    "range_km":null,
-    "cruise_speed_kmh":null,
-    "field_length_landing_m":null,
-    "field_length_takeoff_m":null
-  },
-  {
     "id":1,
     "manufacturer":"Airbus",
     "model":"A320Neo",
