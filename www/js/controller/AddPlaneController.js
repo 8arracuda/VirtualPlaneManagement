@@ -33,7 +33,7 @@ sdApp.controller('AddPlaneController', function ($scope, $rootScope, OpenDatabas
             model: $scope.planeModel,
             airline: $scope.airline,
             landings: [{airport: $scope.startAirport, spd: 0}]
-        }
+        };
         //$rootScope.planes.push(newPlane);
 
         OpenDatabaseFactory.openDatabase(function (db) {
@@ -60,6 +60,6 @@ sdApp.controller('AddPlaneController', function ($scope, $rootScope, OpenDatabas
         });
 
     };
-    //});
+
 
 });

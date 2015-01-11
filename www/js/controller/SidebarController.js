@@ -21,10 +21,10 @@ sdApp.controller('SidebarController', function ($scope) {
             labelText: 'Import',
             linkURL: 'import'
         },
-        {
-            labelText: 'Show My Plane',
-            linkURL: 'showMyPlane'
-        },
+        //{
+          //  labelText: 'Show My Plane',
+            //linkURL: 'showMyPlane'
+        //},
         {
             labelText: 'Add Planes',
             linkURL: 'addPlane'
