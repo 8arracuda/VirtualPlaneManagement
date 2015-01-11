@@ -13,17 +13,17 @@ sdApp.controller('SidebarController', function ($scope) {
             labelText: 'Plane Models',
             linkURL: 'planeModels'
         },
-        {
-            labelText: 'Planes',
-            linkURL: 'planes'
-        },
+        //{
+        //    labelText: 'Planes',
+        //    linkURL: 'planes'
+        //},
         {
             labelText: 'Import',
             linkURL: 'import'
         },
         {
-            labelText: 'Show Planes',
-            linkURL: 'showPlanes'
+            labelText: 'Show My Plane',
+            linkURL: 'showMyPlane'
         },
         {
             labelText: 'Add Planes',

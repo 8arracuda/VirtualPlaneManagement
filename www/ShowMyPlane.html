@@ -1,0 +1,47 @@
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="panel">
+            <div class="panel-heading">
+                {{ myPlane.reg }} ({{ myPlane.model }} - {{ myPlane.airline }})
+            </div>
+            <div class="panel-body">
+
+                landings:
+
+                <div ng-repeat="landing in myPlane.landings track by $index" class="list-group-item">
+                    {{ landing.airport }}
+                </div>
+
+                <input
+                        bs-form-control
+                        id="airport"
+                        type="text"
+                        label="airport"
+                        placeholder="aiport ICAO-Code (for example EDDF)"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="airport"
+                        />
+
+                <input
+                        bs-form-control
+                        id="landingSpeed"
+                        type="text"
+                        label="landingSpeed"
+                        placeholder="enter the landing speed (in feet/min ??)"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="landingSpeed"
+                        />
+
+
+
+                <a ng-click="addLanding()" class="btn btn-primary">add landing</a>
+                <a ng-click="reset()" class="btn btn-primary">reset</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,12 +1,17 @@
-<div class="panel">
-    <div class="panel-heading">
-        Planemodels
-    </div>
-    <div class="panel-body">
+<div class="scrollable">
+    <div class="scrollable-content">
 
-        <div class="scrollable">
-            <div class="scrollable-content">
+        <div class="panel">
+            <div class="panel-heading">
+                Planemodels
+            </div>
+            <div class="panel-body">
+
+
                 <div class="list-group">
+                    <a ng-show="loadInProgress" class="list-group-item list-group-item-warning">
+                        loading...
+                    </a>
                     <a ng-repeat="planemodel in planeModels" class="list-group-item">
                         {{ planemodel.manufacturer }} {{ planemodel.model }}
                         <!--<i class="fa fa-chevron-right pull-right"></i>-->

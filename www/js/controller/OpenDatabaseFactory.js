@@ -5,9 +5,6 @@ angular.module('OpenDatabaseFactory', [])
             openDatabase: function (callback) {
 
                 var db;
-                console.log('openDatabase start');
-
-                //callback(db);
 
                 if (db==null) {
 
@@ -17,7 +14,7 @@ angular.module('OpenDatabaseFactory', [])
                         window.alert("Ihr Browser unterstützt keine stabile Version von IndexedDB. Dieses und jenes Feature wird Ihnen nicht zur Verfügung stehen.");
                     } else {
 
-                        var request = window.indexedDB.open("VirtualPlaneManagement", 2);
+                        var request = window.indexedDB.open("VirtualPlaneManagement", 4);
 
                         request.onerror = function (event) {
                             console.error('request.onerror (in openDatabase)');
@@ -36,10 +33,11 @@ angular.module('OpenDatabaseFactory', [])
                             console.log('onupgradeneeded');
                             db = event.target.result;
 
-                            if (event.oldVersion < 2) {
+                            if (event.oldVersion < 4) {
                                 db.deleteObjectStore("planes");
                                 db.deleteObjectStore("planeModels");
                                 db.deleteObjectStore("landings");
+                                db.deleteObjectStore("myPlanes");
                             }
 
                             var objectStorePlanes = db.createObjectStore("planes", {keyPath: "id"});
@@ -48,18 +46,109 @@ angular.module('OpenDatabaseFactory', [])
                             var objectStorePlaneModels = db.createObjectStore("planeModels", {keyPath: "id"});
                             objectStorePlaneModels.createIndex("key", "key", {unique: true});
 
-                            var objectStoreLandings = db.createObjectStore("landings", {keyPath: "id"});
+                            var objectStoreLandings = db.createObjectStore("landings", {keyPath: "id", autoIncrement:true });
                             objectStoreLandings.createIndex("key", "key", {unique: true});
+
+                            var objectStoreMyPlanes = db.createObjectStore("myPlanes", {keyPath: "id", autoIncrement:true });
+                            objectStoreMyPlanes.createIndex("key", "key", {unique: true});
 
                         }
                     }
 
 
                 }  else {
-                    //return db;
                     callback(db);
                 }
-            }
+            },
+            planeModels: function(callback) {
+                console.log('in planeModels');
+                this.openDatabase(function (db) {
+                    //$scope.loadInProgress = false;
+                    var db = db;
+
+                    planeModels = Array();
+
+                    var transaction = db.transaction("planeModels", "readonly");
+                    var objectStore = transaction.objectStore("planeModels");
+
+                    objectStore.openCursor().onsuccess = function (event) {
+                        var cursor = event.target.result;
+                        if (cursor) {
+                            planeModels.push(cursor.value);
+                            cursor.continue();
+                        }
+                    };
+
+                    transaction.oncomplete = function (event) {
+                        callback(planeModels);
+                        //$scope.$apply();
+
+                    };
+
+                    transaction.onerror = function (event) {
+                        console.error('transaction.onerror');
+                    };
+                });
+
+            },
+            myPlanes: function(callback) {
+                console.log('in planeModels');
+                this.openDatabase(function (db) {
+                    //$scope.loadInProgress = false;
+                    var db = db;
+
+                    myPlanes = Array();
+
+                    var transaction = db.transaction("myPlanes", "readonly");
+                    var objectStore = transaction.objectStore("myPlanes");
+
+                    objectStore.openCursor().onsuccess = function (event) {
+                        var cursor = event.target.result;
+                        if (cursor) {
+                            myPlanes.push(cursor.value);
+                            cursor.continue();
+                        }
+                    };
+
+                    transaction.oncomplete = function (event) {
+                        callback(myPlanes);
+                        //$scope.$apply();
+
+                    };
+
+                    transaction.onerror = function (event) {
+                        console.error('transaction.onerror');
+                    };
+                });
+
+            },
+            getMyPlanesById: function(callback, myPlaneId) {
+
+                console.log('in planeModels');
+                this.openDatabase(function (db) {
+                    //$scope.loadInProgress = false;
+                    var db = db;
+
+                    //myPlanes = Array();
+
+                    var transaction = db.transaction("myPlanes", "readonly");
+                    var objectStore = transaction.objectStore("myPlanes");
+
+                    var idbRequest = objectStore.get(parseInt(myPlaneId));
+
+                    idbRequest.onsuccess = function (event) {
+                        callback(event.target.result);
+                    };
+
+                    transaction.oncomplete = function (event) {
+                    };
+
+                    transaction.onerror = function (event) {
+                        console.error('transaction.onerror');
+                    };
+                });
+
+            },
 
 
         }

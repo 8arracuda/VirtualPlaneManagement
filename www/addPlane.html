@@ -8,6 +8,9 @@
     </div>
     <div class="panel-body">
 
+        <a ng-repeat="plane in myPlanes track by $index" class="list-group-item" href="#/showMyPlane/{{plane.id}}">
+            {{ plane.reg }} ({{ plane.model }} - {{ plane.airline }})
+        </a>
 
                     <select bs-form-control
                             name="infoBox3"
@@ -15,7 +18,7 @@
                             ng-model="planeModel"
                             id="planemodelSelect">
                         <option ng-repeat="planemodel in planeModels">
-                            {{ planemodel.manufacturer }} {{ planemodel.model }}  ({{planemodel.airline}})
+                            {{ planemodel.manufacturer }} {{ planemodel.model }}
                         </option>
                     </select>
 
@@ -41,7 +44,18 @@
                             ng-model="airline"
                             />
 
-                    <a ng-click="addPlane()" class="btn btn-primary">addPlane</a>
+        <input
+                bs-form-control
+                id="startAirport"
+                type="text"
+                label="start airport"
+                placeholder="enter the airlines name here"
+                label-class="col-xs-3 col-sm-2 col-lg-1"
+                class="col-xs-9 col-sm-10 col-lg-11"
+                ng-model="startAirport"
+                />
+
+                    <a ng-click="addMyPlane()" class="btn btn-primary">addMyPlane</a>
                 </div>
 
         </div>

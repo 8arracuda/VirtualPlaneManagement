@@ -21,9 +21,9 @@ sdApp.config(function ($routeProvider) {
             templateUrl: 'import.html',
             controller: 'ImportController'
         }).
-        when('/showPlanes', {
-            templateUrl: 'showPlanes.html',
-            controller: 'ShowPlanesController'
+        when('/showMyPlane/:myPlaneId', {
+            templateUrl: 'showMyPlane.html',
+            controller: 'ShowMyPlaneController'
         }).
         when('/addPlane', {
             templateUrl: 'addPlane.html',
