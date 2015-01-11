@@ -4,6 +4,30 @@
             <div class="panel-heading">
                 {{ myPlane.reg }} ({{ myPlane.model }} - {{ myPlane.airline }})
             </div>
+
+            Edit plane stats:
+
+            <input
+                    bs-form-control
+                    id="reg"
+                    type="text"
+                    label="registration"
+                    placeholder="registratin"
+                    label-class="col-xs-3 col-sm-2 col-lg-1"
+                    class="col-xs-9 col-sm-10 col-lg-11"
+                    ng-model="myPlane.reg"
+                    />
+
+            <input
+                    bs-form-control
+                    id="airline"
+                    type="text"
+                    label="airline"
+                    placeholder="airline"
+                    label-class="col-xs-3 col-sm-2 col-lg-1"
+                    class="col-xs-9 col-sm-10 col-lg-11"
+                    ng-model="myPlane.airline"
+                    />
             <div class="panel-body">
 
                 landings:
@@ -17,7 +41,7 @@
                         id="airport"
                         type="text"
                         label="airport"
-                        placeholder="aiport ICAO-Code (for example EDDF)"
+                        placeholder="airport ICAO-Code (for example EDDF)"
                         label-class="col-xs-3 col-sm-2 col-lg-1"
                         class="col-xs-9 col-sm-10 col-lg-11"
                         ng-model="airport"
@@ -35,13 +59,11 @@
                         />
 
 
-
-                <a ng-click="addLanding()" class="btn btn-primary">add landing</a>
+                <button ng-class="{disabled: airport.length<4 || !airport}" ng-click="addLanding()" class="btn btn-primary">add landing</button>
                 <a ng-click="reset()" class="btn btn-primary">reset</a>
+                <a ng-click="deleteThisPlane()" class="btn btn-danger">delete</a>
+                <a ng-click="save()" class="btn btn-primary">save</a>
             </div>
         </div>
     </div>
 </div>
-
-
-

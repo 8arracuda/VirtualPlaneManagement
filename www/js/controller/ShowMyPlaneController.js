@@ -1,4 +1,4 @@
-sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routeParams, OpenDatabaseFactory) {
+sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routeParams, OpenDatabaseFactory, $location) {
 
     myPlaneId = parseInt($routeParams.myPlaneId);
 
@@ -6,26 +6,46 @@ sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routePa
         $scope.myPlane.landings = Array();
     };
 
-    $scope.addLanding = function () {
+    $scope.deleteThisPlane = function () {
 
-        //$scope.landingSpeed
-        //$scope.airport
-        console.dir($scope.myPlane);
-        $scope.myPlane.landings.push({airport: $scope.airport, spd: $scope.landingSpeed});
+        answer = confirm("Do you really want to delete this plane?");
 
+        if (answer == true) {
+            OpenDatabaseFactory.openDatabase(function (db) {
+
+                var transaction = db.transaction(["myPlanes"], "readwrite");
+
+                var objectStore = transaction.objectStore("myPlanes");
+                //objectStore.put(myPlaneId, $scope.myPlane);
+                objectStore.delete(myPlaneId);
+
+                transaction.oncomplete = function (event) {
+                    $location.path('/addPlane');
+                    $scope.$apply();
+                };
+
+                transaction.onerror = function (event) {
+                    console.error('transaction.onerror (in startPerformanceTest_onlyOne)');
+                    $scope.testInProgress = false;
+                };
+
+            });
+        }
+
+    };
+
+    $scope.save = function () {
 
         OpenDatabaseFactory.openDatabase(function (db) {
 
             var transaction = db.transaction(["myPlanes"], "readwrite");
 
             var objectStore = transaction.objectStore("myPlanes");
-            objectStore.put(myPlaneId, $scope.myPlane);
+            objectStore.put($scope.myPlane);
 
             transaction.oncomplete = function (event) {
 
-                $scope.registration = "";
-                $scope.airline = "";
-                $scope.startAirport = "";
+                alert("Änderungen wurden gespeichert");
 
             };
 
@@ -33,15 +53,22 @@ sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routePa
                 console.error('transaction.onerror (in startPerformanceTest_onlyOne)');
                 $scope.testInProgress = false;
             };
-
         });
 
+    };
+
+    $scope.addLanding = function () {
+
+        console.dir($scope.myPlane);
+        $scope.myPlane.landings.push({airport: $scope.airport.toUpperCase(), spd: $scope.landingSpeed});
+
+        console.dir($scope.myPlane);
+
+        $scope.save();
 
     };
 
     $scope.planeModels = $rootScope.planeModels;
-
-    //$routeParams.myPlaneId;
 
     console.log("$routeParams.myPlaneId" + myPlaneId);
     OpenDatabaseFactory.getMyPlanesById(function (plane) {

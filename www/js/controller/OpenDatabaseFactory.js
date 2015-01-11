@@ -34,10 +34,10 @@ angular.module('OpenDatabaseFactory', [])
                             db = event.target.result;
 
                             if (event.oldVersion < 4) {
-                                db.deleteObjectStore("planes");
-                                db.deleteObjectStore("planeModels");
-                                db.deleteObjectStore("landings");
-                                db.deleteObjectStore("myPlanes");
+                                //db.deleteObjectStore("planes");
+                                //db.deleteObjectStore("planeModels");
+                                //db.deleteObjectStore("landings");
+                                //db.deleteObjectStore("myPlanes");
                             }
 
                             var objectStorePlanes = db.createObjectStore("planes", {keyPath: "id"});

@@ -17,12 +17,19 @@ sdApp.controller('AddPlaneController', function ($scope, $rootScope, OpenDatabas
     });
 
 
-    OpenDatabaseFactory.myPlanes(function (myPlanes) {
-        $scope.loadInProgress = false;
-        $scope.myPlanes = myPlanes;
-        console.log("myPlanes");
-        $scope.$apply();
-    });
+
+    loadMyPlanes = function() {
+
+        OpenDatabaseFactory.myPlanes(function (myPlanes) {
+            $scope.loadInProgress = false;
+            $scope.myPlanes = myPlanes;
+            console.log("myPlanes");
+            $scope.$apply();
+        });
+
+    };
+
+    loadMyPlanes();
 
 
     $scope.addMyPlane = function () {
@@ -49,6 +56,8 @@ sdApp.controller('AddPlaneController', function ($scope, $rootScope, OpenDatabas
                 $scope.registration = "";
                 $scope.airline = "";
                 $scope.startAirport = "";
+                $scope.$apply();
+                loadMyPlanes();
 
             };
 
