@@ -2,6 +2,12 @@ sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routePa
 
     myPlaneId = parseInt($routeParams.myPlaneId);
 
+    initTextFields = function() {
+        $scope.landingSpeed = "";
+        $scope.airport = "";
+    };
+
+    initTextFields();
     $scope.reset = function () {
         $scope.myPlane.landings = Array();
     };
@@ -64,13 +70,21 @@ sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routePa
     $scope.addLanding = function () {
 
         console.dir($scope.myPlane);
-        $scope.myPlane.landings.push({airport: $scope.airport.toUpperCase(), spd: $scope.landingSpeed});
 
-        console.dir($scope.myPlane);
+        var landingSpeed=parseInt($scope.landingSpeed);
+        console.log("landingSpeed" + landingSpeed);
+        if (!(landingSpeed>0)) {
+            console.log("!! landingSpeed" + landingSpeed);
+            landingSpeed="";
+        }
+
+        $scope.myPlane.landings.push({airport: $scope.airport.toUpperCase(), spd: landingSpeed});
+
         $scope.airport = "";
         $scope.landingSpeed = "";
 
         $scope.save();
+        initTextFields();
 
     };
 

@@ -17,6 +17,10 @@ sdApp.config(function ($routeProvider) {
             templateUrl: 'planeModels.html',
             controller: 'PlaneModelsController'
         }).
+        when('/airlines', {
+            templateUrl: 'airlines.html',
+            controller: 'AirlinesController'
+        }).
         when('/importExport', {
             templateUrl: 'importExport.html',
             controller: 'ImportExportController'

@@ -2,17 +2,21 @@
     <div class="scrollable-content">
         <div class="panel">
             <div class="panel-heading">
-                {{ myPlane.reg }} ({{ myPlane.model }} - {{ myPlane.airline }})
+                <b>{{ myPlane.reg }} ({{ myPlane.model }} - {{ myPlane.airline }})</b>
             </div>
+            <div class="panel-heading">
+                Edit plane stats:
+            </div>
+            <div class="panel-body">
 
-            Edit plane stats:
+
 
             <input
                     bs-form-control
                     id="reg"
                     type="text"
                     label="registration"
-                    placeholder="registratin"
+                    placeholder="registration"
                     label-class="col-xs-3 col-sm-2 col-lg-1"
                     class="col-xs-9 col-sm-10 col-lg-11"
                     ng-model="myPlane.reg"
@@ -28,12 +32,22 @@
                     class="col-xs-9 col-sm-10 col-lg-11"
                     ng-model="myPlane.airline"
                     />
+
+
+
+</div>
+            <div class="panel-heading">
+                Landings
+            </div>
             <div class="panel-body">
-
-                landings:
-
                 <div ng-repeat="landing in myPlane.landings track by $index" class="list-group-item">
+                    <div ng-show="landing.spd==''">
                     {{ landing.airport }}
+                    </div>
+                    <div ng-hide="landing.spd==''">
+                        {{ landing.airport }} ({{ landing.spd }} feet/sec)
+                    </div>
+
                 </div>
 
                 <input
@@ -47,8 +61,6 @@
                         ng-model="airport"
                         />
 
-                <canvas id="canvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-
                 <input
                         bs-form-control
                         id="landingSpeed"
@@ -60,6 +72,15 @@
                         ng-model="landingSpeed"
                         />
 
+                <button ng-class="{disabled: airport.length<4 || !airport}" ng-click="addLanding()" class="btn btn-primary">add landing</button>
+                <a ng-click="reset()" class="btn btn-primary">reset</a>
+                <a ng-click="deleteThisPlane()" class="btn btn-danger">delete</a>
+                <a ng-click="save()" class="btn btn-primary">save</a>
+                </div>
+            <div class="panel-heading">
+                Camera Picture Upload
+            </div>
+            <div class="panel-body">
                 <div ng-show="!camera">
                     no camera available!
                 </div>
@@ -72,7 +93,7 @@
                     <img id="myImage">
                 </div>
 
-
+                <canvas id="canvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
                 <h2>capure image</h2><br>
                 <input type="file" id="filesCapture" accept="image/*" capture><br>
 
@@ -80,10 +101,7 @@
 
                 <div id="list"></div>
 
-                <button ng-class="{disabled: airport.length<4 || !airport}" ng-click="addLanding()" class="btn btn-primary">add landing</button>
-                <a ng-click="reset()" class="btn btn-primary">reset</a>
-                <a ng-click="deleteThisPlane()" class="btn btn-danger">delete</a>
-                <a ng-click="save()" class="btn btn-primary">save</a>
+
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@ angular.module('OpenDatabaseFactory', [])
                         window.alert("Ihr Browser unterstützt keine stabile Version von IndexedDB. Dieses und jenes Feature wird Ihnen nicht zur Verfügung stehen.");
                     } else {
 
-                        var request = window.indexedDB.open("VirtualPlaneManagement", 6);
+                        var request = window.indexedDB.open("VirtualPlaneManagement", 7);
 
                         request.onerror = function (event) {
                             console.error('request.onerror (in openDatabase)');
@@ -32,12 +32,12 @@ angular.module('OpenDatabaseFactory', [])
                             console.log('onupgradeneeded');
                             db = event.target.result;
 
-                            /*
+
                              db.deleteObjectStore("planes");
                              db.deleteObjectStore("planeModels");
                              db.deleteObjectStore("landings");
                              db.deleteObjectStore("myPlanes");
-                             */
+
 
                             var objectStorePlanes = db.createObjectStore("planes", {
                                 keyPath: "id"
@@ -48,6 +48,10 @@ angular.module('OpenDatabaseFactory', [])
                             var objectStorePlaneModels = db.createObjectStore("planeModels", {
                                 keyPath: "id"
                                 //autoIncrement: true
+                            });
+                            var objectStorePlaneModels = db.createObjectStore("airlines", {
+                                keyPath: "id",
+                                autoIncrement: true
                             });
                             objectStorePlaneModels.createIndex("key", "key", {unique: true});
 
@@ -89,6 +93,34 @@ angular.module('OpenDatabaseFactory', [])
 
                     transaction.oncomplete = function (event) {
                         callback(planeModels);
+
+                    };
+
+                    transaction.onerror = function (event) {
+                        console.error('transaction.onerror');
+                    };
+                });
+
+            },
+            airlines: function (callback) {
+                console.log('in airlines');
+                this.openDatabase(function (db) {
+
+                    airlines = Array();
+
+                    var transaction = db.transaction("airlines", "readonly");
+                    var objectStore = transaction.objectStore("airlines");
+
+                    objectStore.openCursor().onsuccess = function (event) {
+                        var cursor = event.target.result;
+                        if (cursor) {
+                            airlines.push(cursor.value);
+                            cursor.continue();
+                        }
+                    };
+
+                    transaction.oncomplete = function (event) {
+                        callback(airlines);
 
                     };
 
@@ -160,6 +192,27 @@ angular.module('OpenDatabaseFactory', [])
                     var objectStore = transaction.objectStore("planeModels");
 
                     var idbRequest = objectStore.get(parseInt(planeModelId));
+
+                    idbRequest.onsuccess = function (event) {
+                        callback(event.target.result);
+                    };
+
+                    transaction.oncomplete = function (event) {
+                    };
+
+                    transaction.onerror = function (event) {
+                        console.error('transaction.onerror');
+                    };
+                });
+            },
+            getAirlineById: function (airlineId, callback) {
+
+                this.openDatabase(function (db) {
+
+                    var transaction = db.transaction("airlines", "readonly");
+                    var objectStore = transaction.objectStore("airlines");
+
+                    var idbRequest = objectStore.get(parseInt(airlineId));
 
                     idbRequest.onsuccess = function (event) {
                         callback(event.target.result);

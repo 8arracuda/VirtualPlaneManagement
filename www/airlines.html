@@ -1,0 +1,84 @@
+<div class="scrollable">
+    <div class="scrollable-content">
+
+        <div class="panel">
+            <div class="panel-heading">
+                Airlines
+            </div>
+            <div class="panel-body">
+
+                <div class="list-group">
+                    <a ng-show="loadInProgress" class="list-group-item list-group-item-warning">
+                        loading...
+                    </a>
+                    <a ng-repeat="airline in airlines" class="list-group-item" ng-click="selectAirline(airline.id)">
+                        {{ airline.name}} | {{ airline.iata}} <br>
+                        {{ airline.homeApt}} | {{ airline.callsign}}
+                        <!--<i class="fa fa-chevron-right pull-right"></i>-->
+                    </a>
+                </div>
+            </div>
+
+            <div class="panel-heading">
+                Edit Airline
+            </div>
+
+            <div class="panel-body">
+
+                <input
+                        bs-form-control
+                        id="name"
+                        type="text"
+                        label="Airline name"
+                        placeholder="enter the home airline's name"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="selectedAirline.name"
+                        />
+
+                <input
+                        bs-form-control
+                        onkeyup="capitalizeHomeAptString()"
+                        id="homeApt"
+                        type="text"
+                        label="Home-Airport"
+                        placeholder="enter the home airport of the airline"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="selectedAirline.homeApt"
+                        />
+
+                <input
+                        bs-form-control
+                        onkeyup="capitalizeIataString()"
+                        id="iata"
+                        type="text"
+                        label="IATA-Code"
+                        placeholder="enter the home airline's IATA code (for example LH)"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="selectedAirline.iata"
+                        />
+
+                <input
+                        bs-form-control
+                        onkeyup="capitalizeCallsignString()"
+                        id="callsign"
+                        type="callsign"
+                        label="Callsign"
+                        placeholder="enter the home airline's IATA code (for example LUFTHANSA)"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="selectedAirline.callsign"
+                        />
+
+
+                <button class="btn btn-primary" ng-click="saveAirline()">save</button>
+                <button class="btn btn-primary" ng-click="createAirline()">create</button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

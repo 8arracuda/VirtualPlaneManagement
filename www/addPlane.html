@@ -22,9 +22,6 @@
                             </div>
                         </div>
                     </a>
-                    <!--<div class="list-group-item" href="#/showMyPlane/{{plane.id}}">-->
-                        <!--recent flight: {{ plane.landings[plane.landings.length-2].airport }} -> {{ plane.landings[plane.landings.length-1].airport }}-->
-                    <!--</div>-->
 
                 </div>
 
@@ -36,6 +33,20 @@
                     <option ng-repeat="planemodel in planeModels">
                         {{ planemodel.manufacturer }} {{ planemodel.model }}
                     </option>
+                </select>
+
+                <select bs-form-control
+                        ng-change="airlineSelected(a)"
+                        name="infoBox3"
+                        label="Airline"
+                        ng-model="selectedAirline"
+                        ng-options="a.name for a in airlines"
+                        id="airlineSelect">
+                    <!--<option ng-repeat="a in airlines"-->
+
+                            id="airlineSelect2">
+                        {{ a.name }}
+                    <!--</option>-->
                 </select>
 
                 <input
@@ -71,7 +82,7 @@
                         ng-model="startAirport"
                         />
 
-                <a ng-click="addMyPlane()" class="btn btn-primary">addMyPlane</a>
+                <a ng-click="addMyPlane()" class="btn btn-primary">add plane</a>
             </div>
 
         </div>
