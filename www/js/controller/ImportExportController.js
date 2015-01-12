@@ -47,4 +47,14 @@ sdApp.controller('ImportExportController', function ($scope, $rootScope, OpenDat
     loadMyPlanes();
     loadPlaneModels();
 
+    $scope.loadPlaneModelsFromFile = function () {
+
+        var filename = 'res/data/planeModels.json';
+        console.log(FileHelper.readStringFromFileAtPath(filename));
+
+        $scope.planeModels = JSON.parse(FileHelper.readStringFromFileAtPath(filename));
+
+        $scope.$apply()
+    };
+
 })
