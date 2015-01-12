@@ -1,62 +1,78 @@
-
 <div class="scrollable">
     <div class="scrollable-content">
 
-<div class="panel">
-    <div class="panel-heading">
-        Add Planemodel
-    </div>
-    <div class="panel-body">
+        <div class="panel">
+            <div class="panel-heading">
+                Add Planemodel
+            </div>
+            <div class="panel-body">
 
-        <a ng-repeat="plane in myPlanes track by $index" class="list-group-item" href="#/showMyPlane/{{plane.id}}">
-            {{ plane.reg }} ({{ plane.model }} - {{ plane.airline }})
-        </a>
+                <div ng-repeat="plane in myPlanes track by $index">
 
-                    <select bs-form-control
-                            name="infoBox3"
-                            label="Plane model"
-                            ng-model="planeModel"
-                            id="planemodelSelect">
-                        <option ng-repeat="planemodel in planeModels">
-                            {{ planemodel.manufacturer }} {{ planemodel.model }}
-                        </option>
-                    </select>
+                    <a class="list-group-item" href="#/showMyPlane/{{plane.id}}">
+                        {{ plane.reg }} ({{ plane.model }} - {{ plane.airline }})
+                        <div style="font-size: 70%">
+                            <div ng-show="plane.landings.length>1">
 
-                    <input
-                            bs-form-control
-                            id="Reg"
-                            type="text"
-                            label="Registration"
-                            placeholder="enter registration here (for example D-AIMA)"
-                            label-class="col-xs-3 col-sm-2 col-lg-1"
-                            class="col-xs-9 col-sm-10 col-lg-11"
-                            ng-model="registration"
-                            />
+                            recent flight: {{ plane.landings[plane.landings.length-2].airport }} -> {{ plane.landings[plane.landings.length-1].airport }}
+                        </div>
+                            <div ng-show="plane.landings.length==1">
 
-                    <input
-                            bs-form-control
-                            id="Airline"
-                            type="text"
-                            label="Airline"
-                            placeholder="enter the airlines name here"
-                            label-class="col-xs-3 col-sm-2 col-lg-1"
-                            class="col-xs-9 col-sm-10 col-lg-11"
-                            ng-model="airline"
-                            />
+                                starting point: {{ plane.landings[0].airport }}
+                            </div>
+                        </div>
+                    </a>
+                    <!--<div class="list-group-item" href="#/showMyPlane/{{plane.id}}">-->
+                        <!--recent flight: {{ plane.landings[plane.landings.length-2].airport }} -> {{ plane.landings[plane.landings.length-1].airport }}-->
+                    <!--</div>-->
 
-        <input
-                bs-form-control
-                id="startAirport"
-                type="text"
-                label="start airport"
-                placeholder="enter the airlines name here"
-                label-class="col-xs-3 col-sm-2 col-lg-1"
-                class="col-xs-9 col-sm-10 col-lg-11"
-                ng-model="startAirport"
-                />
-
-                    <a ng-click="addMyPlane()" class="btn btn-primary">addMyPlane</a>
                 </div>
+
+                <select bs-form-control
+                        name="infoBox3"
+                        label="Plane model"
+                        ng-model="planeModel"
+                        id="planemodelSelect">
+                    <option ng-repeat="planemodel in planeModels">
+                        {{ planemodel.manufacturer }} {{ planemodel.model }}
+                    </option>
+                </select>
+
+                <input
+                        bs-form-control
+                        id="Reg"
+                        type="text"
+                        label="Registration"
+                        placeholder="enter registration here (for example D-AIMA)"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="registration"
+                        />
+
+                <input
+                        bs-form-control
+                        id="Airline"
+                        type="text"
+                        label="Airline"
+                        placeholder="enter the airlines name here"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="airline"
+                        />
+
+                <input
+                        bs-form-control
+                        id="startAirport"
+                        type="text"
+                        label="start airport"
+                        placeholder="enter the airlines name here"
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="startAirport"
+                        />
+
+                <a ng-click="addMyPlane()" class="btn btn-primary">addMyPlane</a>
+            </div>
 
         </div>
 

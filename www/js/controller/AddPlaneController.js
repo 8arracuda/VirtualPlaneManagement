@@ -38,7 +38,7 @@ sdApp.controller('AddPlaneController', function ($scope, $rootScope, OpenDatabas
             reg: $scope.registration,
             model: $scope.planeModel,
             airline: $scope.airline,
-            landings: [{airport: $scope.startAirport, spd: 0}]
+            landings: [{airport: $scope.startAirport.toUpperCase(), spd: 0}]
         };
         //$rootScope.planes.push(newPlane);
 

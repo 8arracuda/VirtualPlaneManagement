@@ -6,20 +6,20 @@
 
         <div class="panel">
             <div class="panel-heading">
-                Import
+                Import PlaneModels
             </div>
             <div class="panel-body">
 
-                <a ng-click="savePlaneModels()" class="btn btn-primary">save Plane</a>
                 <a ng-click="loadPlaneModelsFromFile()" class="btn btn-primary">loadPlaneModelsFromFile</a>
-            </div>
 
-            <div class="panel-heading">
-                Export
+                <a ng-click="initPlaneModels()" class="btn btn-primary">initPlaneModels</a>
+                <a ng-click="loadPlaneModelsFromDatabase()" class="btn btn-primary">loadPlaneModelsFromDatabase</a>
             </div>
+            <p><b>planeModels.length (in database) {{planeModels.length}}</b></p>
             <div class="panel-body">
 
                 <input
+                        ng-click="updateExportString1()"
                         bs-form-control
                         id="exportString1"
                         type="text"
@@ -30,7 +30,19 @@
                         ng-model="exportString1"
                         />
 
+            </div>
+
+            <div class="panel-heading">
+                Import MyPlanes
+            </div>
+            <div class="panel-body">
+            <a ng-click="saveMyPlanes()" class="btn btn-primary">save MyPlanes</a>
+            <a ng-click="initMyPlanes()" class="btn btn-primary">initMyPlanes</a>
+            <a ng-click="loadMyPlanesFromDatabase()" class="btn btn-primary">loadMyPlanesFromDatabase</a>
+
+                <p><b>myPlanes.length {{myPlanes.length}}</b></p>
                 <input
+                        ng-click="updateExportString2()"
                         bs-form-control
                         id="exportString2"
                         type="text"
