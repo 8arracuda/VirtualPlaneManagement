@@ -13,7 +13,7 @@ sdApp.controller('ImportExportController', function ($scope, $rootScope, OpenDat
             }
 
             transaction.oncomplete = function (event) {
-                console.log('transaction.oncomplete');
+                console.log('transaction.oncomplete (' + $scope.planeModels.length + " planeModels saved)");
             };
 
             transaction.onerror = function (event) {
@@ -23,7 +23,7 @@ sdApp.controller('ImportExportController', function ($scope, $rootScope, OpenDat
     };
 
     loadMyPlanes = function () {
-
+        console.log("loadMyPlanes start");
         OpenDatabaseFactory.myPlanes(function (myPlanes) {
             $scope.loadInProgress = false;
             $scope.myPlanes = myPlanes;
@@ -34,7 +34,7 @@ sdApp.controller('ImportExportController', function ($scope, $rootScope, OpenDat
     };
 
     loadPlaneModels = function () {
-
+        console.log("loadPlaneModels start");
         OpenDatabaseFactory.planeModels(function (planeModels) {
             $scope.loadInProgress = false;
             $scope.planeModels = planeModels;
@@ -47,4 +47,4 @@ sdApp.controller('ImportExportController', function ($scope, $rootScope, OpenDat
     loadMyPlanes();
     loadPlaneModels();
 
-});
+})

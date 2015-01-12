@@ -44,7 +44,6 @@ sdApp.controller('AddPlaneController', function ($scope, $rootScope, OpenDatabas
 
         OpenDatabaseFactory.openDatabase(function (db) {
 
-
             var transaction = db.transaction(["myPlanes"], "readwrite");
 
             var objectStore = transaction.objectStore("myPlanes");

@@ -40,14 +40,14 @@ angular.module('OpenDatabaseFactory', [])
                              */
 
                             var objectStorePlanes = db.createObjectStore("planes", {
-                                keyPath: "id",
-                                autoIncrement: true
+                                keyPath: "id"
+                                //autoIncrement: true
                             });
                             objectStorePlanes.createIndex("key", "key", {unique: true});
 
                             var objectStorePlaneModels = db.createObjectStore("planeModels", {
-                                keyPath: "id",
-                                autoIncrement: true
+                                keyPath: "id"
+                                //autoIncrement: true
                             });
                             objectStorePlaneModels.createIndex("key", "key", {unique: true});
 
@@ -62,10 +62,8 @@ angular.module('OpenDatabaseFactory', [])
                                 autoIncrement: true
                             });
                             objectStoreMyPlanes.createIndex("key", "key", {unique: true});
-
                         }
                     }
-
 
                 } else {
                     callback(db);
@@ -75,7 +73,6 @@ angular.module('OpenDatabaseFactory', [])
                 console.log('in planeModels');
                 this.openDatabase(function (db) {
                     //$scope.loadInProgress = false;
-                    var db = db;
 
                     planeModels = Array();
 
@@ -92,7 +89,6 @@ angular.module('OpenDatabaseFactory', [])
 
                     transaction.oncomplete = function (event) {
                         callback(planeModels);
-                        //$scope.$apply();
 
                     };
 
@@ -176,9 +172,6 @@ angular.module('OpenDatabaseFactory', [])
                         console.error('transaction.onerror');
                     };
                 });
-
             }
-
-
         }
     });
