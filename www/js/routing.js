@@ -34,6 +34,6 @@ sdApp.config(function ($routeProvider) {
             controller: 'AddPlaneController'
         }).
         otherwise({
-            redirectTo: '/start'
+            redirectTo: '/addPlane'
         });
 });

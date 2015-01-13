@@ -23,17 +23,17 @@ sdApp.controller('ImportExportController', function ($scope, $rootScope, OpenDat
         });
     };
 
-    $scope.planeModelsToClipboard = function() {
+    $scope.planeModelsToClipboard = function () {
         cordova.plugins.clipboard.copy(JSON.stringify($scope.planeModels));
         alert('copied export-string for planeModels to clipboard.');
     };
 
-    $scope.airlinesToClipboard = function() {
+    $scope.airlinesToClipboard = function () {
         cordova.plugins.clipboard.copy(JSON.stringify($scope.airlines));
         alert('copied export-string for airlines to clipboard.');
     };
 
-    $scope.myPlanesToClipboard = function() {
+    $scope.myPlanesToClipboard = function () {
         cordova.plugins.clipboard.copy(JSON.stringify($scope.myPlanes));
         alert('copied export-string for myPlanes to clipboard.');
     };
@@ -87,7 +87,6 @@ sdApp.controller('ImportExportController', function ($scope, $rootScope, OpenDat
     };
 
 
-
     $scope.loadPlaneModelsFromDatabase = function () {
         console.log("loadPlaneModels start");
         OpenDatabaseFactory.planeModels(function (planeModels) {
@@ -132,33 +131,26 @@ sdApp.controller('ImportExportController', function ($scope, $rootScope, OpenDat
     };
 
 
-
-
-
-    $scope.updateExportStringMyPlanes = function() {
+    $scope.updateExportStringMyPlanes = function () {
 
         $scope.exportStringMyPlanes = JSON.stringify($scope.myPlanes);
         $scope.$apply();
 
     };
 
-    $scope.updateExportStringPlaneModels = function() {
+    $scope.updateExportStringPlaneModels = function () {
 
         $scope.exportStringPlaneModels = JSON.stringify($scope.planeModels);
         $scope.$apply();
 
     };
 
-    $scope.updateExportStringAirlines = function() {
+    $scope.updateExportStringAirlines = function () {
 
         $scope.exportStringAirlines = JSON.stringify($scope.airlines);
         $scope.$apply();
 
     };
-
-
-
-
 
 
     $scope.loadPlaneModelsFromFile = function () {

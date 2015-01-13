@@ -11,8 +11,8 @@
                     <a ng-show="loadInProgress" class="list-group-item list-group-item-warning">
                         loading...
                     </a>
-                    <a ng-repeat="airline in airlines" class="list-group-item" ng-click="selectAirline(airline.id)">
-                        {{ airline.name}} | {{ airline.iata}} <br>
+                    <a ng-repeat="airline in airlines" ng-class="{'list-group-item-success': airline.id==selectedAirlineId}" class="list-group-item" ng-click="selectAirline(airline.id)">
+                        <b>{{ airline.name}}</b> | {{ airline.iata}} <br>
                         {{ airline.homeApt}} | {{ airline.callsign}}
                         <!--<i class="fa fa-chevron-right pull-right"></i>-->
                     </a>

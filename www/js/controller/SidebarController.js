@@ -1,10 +1,10 @@
 sdApp.controller('SidebarController', function ($scope) {
 
     $scope.sidebar_main = [
-        {
-            labelText: 'Start',
-            linkURL: 'start'
-        },
+        //{
+        //    labelText: 'Start',
+        //    linkURL: 'start'
+        //},
         {
             labelText: 'Add Landing',
             linkURL: 'addLanding'
@@ -17,10 +17,7 @@ sdApp.controller('SidebarController', function ($scope) {
         //    labelText: 'Planes',
         //    linkURL: 'planes'
         //},
-        {
-            labelText: 'Import / Export',
-            linkURL: 'importExport'
-        },
+
         {
             labelText: 'Airlines',
             linkURL: 'airlines'
@@ -32,9 +29,11 @@ sdApp.controller('SidebarController', function ($scope) {
         {
             labelText: 'Add Planes',
             linkURL: 'addPlane'
-        }
+        },
+        {
+            labelText: 'Import / Export',
+            linkURL: 'importExport'
+        },
     ];
-
-
 
 });

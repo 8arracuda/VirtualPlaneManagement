@@ -72,13 +72,13 @@ sdApp.controller('PlaneModelsController', function ($scope, $rootScope, OpenData
 
     $scope.selectPlaneModel = function (id) {
         //$scope.selectedPlaneModel = $scope.planeModels[parseInt(id)];
-
+        $scope.selectedPlaneModelId = id;
         OpenDatabaseFactory.getPlanemodelById(id, function(planemodel) {
             $scope.selectedPlaneModel = planemodel;
             $scope.$apply();
         });
         //alert("$scope.planeModels[parseInt(id)]:" + JSON.stringify($scope.planeModels[parseInt(id)]));
-    }
+    };
 
     $scope.savePlaneModel = function() {
         OpenDatabaseFactory.openDatabase(function (db) {

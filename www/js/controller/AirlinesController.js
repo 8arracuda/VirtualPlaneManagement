@@ -43,7 +43,7 @@ sdApp.controller('AirlinesController', function ($scope, $rootScope, OpenDatabas
 
 
     $scope.selectAirline= function (id) {
-
+        $scope.selectedAirlineId = id;
         OpenDatabaseFactory.getAirlineById(id, function(airline) {
             $scope.selectedAirline = airline;
             $scope.$apply();
