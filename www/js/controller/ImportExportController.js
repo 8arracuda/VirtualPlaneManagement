@@ -23,6 +23,21 @@ sdApp.controller('ImportExportController', function ($scope, $rootScope, OpenDat
         });
     };
 
+    $scope.planeModelsToClipboard = function() {
+        cordova.plugins.clipboard.copy(JSON.stringify($scope.planeModels));
+        alert('copied export-string for planeModels to clipboard.');
+    };
+
+    $scope.airlinesToClipboard = function() {
+        cordova.plugins.clipboard.copy(JSON.stringify($scope.airlines));
+        alert('copied export-string for airlines to clipboard.');
+    };
+
+    $scope.myPlanesToClipboard = function() {
+        cordova.plugins.clipboard.copy(JSON.stringify($scope.myPlanes));
+        alert('copied export-string for myPlanes to clipboard.');
+    };
+
     $scope.saveMyPlanes = function () {
         console.log("saveMyPlanes");
         OpenDatabaseFactory.openDatabase(function (db) {
