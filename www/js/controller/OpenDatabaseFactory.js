@@ -76,9 +76,8 @@ angular.module('OpenDatabaseFactory', [])
             planeModels: function (callback) {
                 console.log('in planeModels');
                 this.openDatabase(function (db) {
-                    //$scope.loadInProgress = false;
 
-                    planeModels = Array();
+                    var planeModels = Array();
 
                     var transaction = db.transaction("planeModels", "readonly");
                     var objectStore = transaction.objectStore("planeModels");
@@ -93,7 +92,6 @@ angular.module('OpenDatabaseFactory', [])
 
                     transaction.oncomplete = function (event) {
                         callback(planeModels);
-
                     };
 
                     transaction.onerror = function (event) {
@@ -106,7 +104,7 @@ angular.module('OpenDatabaseFactory', [])
                 console.log('in airlines');
                 this.openDatabase(function (db) {
 
-                    airlines = Array();
+                    var airlines = Array();
 
                     var transaction = db.transaction("airlines", "readonly");
                     var objectStore = transaction.objectStore("airlines");
@@ -133,10 +131,8 @@ angular.module('OpenDatabaseFactory', [])
             myPlanes: function (callback) {
                 console.log('in planeModels');
                 this.openDatabase(function (db) {
-                    //$scope.loadInProgress = false;
-                    var db = db;
 
-                    myPlanes = Array();
+                    var myPlanes = Array();
 
                     var transaction = db.transaction("myPlanes", "readonly");
                     var objectStore = transaction.objectStore("myPlanes");
@@ -151,8 +147,6 @@ angular.module('OpenDatabaseFactory', [])
 
                     transaction.oncomplete = function (event) {
                         callback(myPlanes);
-                        //$scope.$apply();
-
                     };
 
                     transaction.onerror = function (event) {

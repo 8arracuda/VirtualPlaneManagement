@@ -1,56 +1,74 @@
-<a class="btn btn-primary" ng-click="savePlaneModels()">save planeModels</a>
-
-
 <div class="scrollable">
     <div class="scrollable-content">
 
         <div class="panel">
             <div class="panel-heading">
-                Import PlaneModels
+                PlaneModels
             </div>
             <div class="panel-body">
 
+                <a class="btn btn-primary" ng-click="savePlaneModels()">save planeModels</a>
                 <a ng-click="loadPlaneModelsFromFile()" class="btn btn-primary">loadPlaneModelsFromFile</a>
-
-                <a ng-click="initPlaneModels()" class="btn btn-primary">initPlaneModels</a>
                 <a ng-click="loadPlaneModelsFromDatabase()" class="btn btn-primary">loadPlaneModelsFromDatabase</a>
             </div>
             <p><b>planeModels.length (in database) {{planeModels.length}}</b></p>
             <div class="panel-body">
 
                 <input
-                        ng-click="updateExportString1()"
+                        ng-click="updateExportStringPlaneModels()"
                         bs-form-control
-                        id="exportString1"
+                        id="exportStringPlaneModels"
                         type="text"
-                        label="ExportString1"
+                        label="ExportStringPlaneModels"
                         placeholder=""
                         label-class="col-xs-3 col-sm-2 col-lg-1"
                         class="col-xs-9 col-sm-10 col-lg-11"
-                        ng-model="exportString1"
+                        ng-model="exportStringPlaneModels"
                         />
 
             </div>
 
             <div class="panel-heading">
-                Import MyPlanes
+                MyPlanes
             </div>
             <div class="panel-body">
             <a ng-click="saveMyPlanes()" class="btn btn-primary">save MyPlanes</a>
-            <a ng-click="initMyPlanes()" class="btn btn-primary">initMyPlanes</a>
+                <a ng-click="loadMyPlanesFromFile()" class="btn btn-primary">loadMyPlanesFromFile</a>
             <a ng-click="loadMyPlanesFromDatabase()" class="btn btn-primary">loadMyPlanesFromDatabase</a>
 
                 <p><b>myPlanes.length {{myPlanes.length}}</b></p>
                 <input
-                        ng-click="updateExportString2()"
+                        ng-click="updateExportStringMyPlanes()"
                         bs-form-control
-                        id="exportString2"
+                        id="exportStringMyPlanes"
                         type="text"
-                        label="ExportString2"
+                        label="ExportStringMyPlanes"
                         placeholder=""
                         label-class="col-xs-3 col-sm-2 col-lg-1"
                         class="col-xs-9 col-sm-10 col-lg-11"
-                        ng-model="exportString2"
+                        ng-model="exportStringMyPlanes"
+                        />
+            </div>
+
+            <div class="panel-heading">
+                Airlines
+            </div>
+            <div class="panel-body">
+                <a ng-click="saveAirlines()" class="btn btn-primary">save Airlines</a>
+                <a ng-click="loadAirlinesFromFile()" class="btn btn-primary">loadAirlinesFromFile</a>
+                <a ng-click="loadAirlinesFromDatabase()" class="btn btn-primary">loadAirlinesFromDatabase</a>
+
+                <p><b>airlines.length {{airlines.length}}</b></p>
+                <input
+                        ng-click="updateExportStringAirlines()"
+                        bs-form-control
+                        id="exportStringAirlines"
+                        type="text"
+                        label="ExportStringAirlines"
+                        placeholder=""
+                        label-class="col-xs-3 col-sm-2 col-lg-1"
+                        class="col-xs-9 col-sm-10 col-lg-11"
+                        ng-model="exportStringAirlines"
                         />
             </div>
 

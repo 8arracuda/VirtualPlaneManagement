@@ -1,5 +1,9 @@
 sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routeParams, OpenDatabaseFactory, $location) {
 
+    $scope.backButtonPressed = function() {
+        $location.path('/addPlane');
+    };
+
     myPlaneId = parseInt($routeParams.myPlaneId);
 
     initTextFields = function() {

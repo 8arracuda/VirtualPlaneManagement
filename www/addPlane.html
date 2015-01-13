@@ -3,7 +3,7 @@
 
         <div class="panel">
             <div class="panel-heading">
-                Add Planemodel
+                List of existing planes
             </div>
             <div class="panel-body">
 
@@ -14,8 +14,9 @@
                         <div style="font-size: 70%">
                             <div ng-show="plane.landings.length>1">
 
-                            recent flight: {{ plane.landings[plane.landings.length-2].airport }} -> {{ plane.landings[plane.landings.length-1].airport }}
-                        </div>
+                                recent flight: {{ plane.landings[plane.landings.length-2].airport }} -> {{
+                                plane.landings[plane.landings.length-1].airport }}
+                            </div>
                             <div ng-show="plane.landings.length==1">
 
                                 starting point: {{ plane.landings[0].airport }}
@@ -24,6 +25,11 @@
                     </a>
 
                 </div>
+            </div>
+            <div class="panel-heading">
+                Add a new plane
+            </div>
+            <div class="panel-body">
 
                 <select bs-form-control
                         name="infoBox3"
@@ -44,8 +50,8 @@
                         id="airlineSelect">
                     <!--<option ng-repeat="a in airlines"-->
 
-                            id="airlineSelect2">
-                        {{ a.name }}
+                    id="airlineSelect2">
+                    {{ a.name }}
                     <!--</option>-->
                 </select>
 
