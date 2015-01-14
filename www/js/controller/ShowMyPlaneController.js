@@ -153,7 +153,6 @@ sdApp.controller('ShowMyPlaneController', function ($scope, $rootScope, $routePa
                 document.getElementById('list').insertBefore(span, null);
 
                 var ctx = document.getElementById('canvas').getContext('2d');
-                ;
 
                 var img = new Image;
                 img.src = URL.createObjectURL(f);

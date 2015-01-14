@@ -1,0 +1,27 @@
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="panel">
+            <div class="panel-heading">
+                Plane Photo
+            </div>
+            <div class="panel-body">
+
+                <div id="list"></div>
+
+                <button class="btn" ng-click="decreaseScale()">scale -</button>
+                <button class="btn" ng-click="increaseScale()">scale +</button><br>
+
+                <button class="btn" ng-click="decreaseOffsetX()">offset X -</button>
+                <button class="btn" ng-click="increaseOffsetX()">offset X +</button>
+
+                <button class="btn" ng-click="decreaseOffsetY()">offset Y -</button>
+                <button class="btn" ng-click="increaseOffsetY()">offset Y +</button>
+
+                <canvas id="canvas" width="300" height="300" style="border:1px solid #000000;"></canvas>
+
+                <h2>capure image</h2><br>
+                <input type="file" id="filesCapture_new" accept="image/*" capture><br>
+            </div>
+        </div>
+    </div>
+</div>

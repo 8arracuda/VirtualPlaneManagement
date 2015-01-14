@@ -13,6 +13,10 @@ sdApp.controller('SidebarController', function ($scope) {
             labelText: 'Plane Models',
             linkURL: 'planeModels'
         },
+        {
+            labelText: 'Plane Photo',
+            linkURL: 'planePhoto'
+        },
         //{
         //    labelText: 'Planes',
         //    linkURL: 'planes'
